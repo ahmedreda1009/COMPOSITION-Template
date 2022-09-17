@@ -1,0 +1,40 @@
+@use '../abstracts';
+
+/*-------------------------------------------------------------------*/
+/*--global rules-----------------------------------------------------*/
+/*-------------------------------------------------------------------*/
+*,
+*::before,
+*::after {
+    @include abstracts.prefixer(box-sizing, border-box, webkit moz o);
+    margin: 0;
+    padding: 0;
+    /* border: 1px solid red; */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font: {
+        family: 'tahoma';
+    }
+}
+
+ul {
+    list-style-type: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+::selection {
+    color: #FFF;
+    background-color: abstracts.$mainColorDark;
+}

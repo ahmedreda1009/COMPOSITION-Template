@@ -1,0 +1,42 @@
+@use '../abstracts';
+
+/*-------------------------------------------------------------------*/
+/*--call to action main button---------------------------------------*/
+/*-------------------------------------------------------------------*/
+.cta-main {
+    display: block;
+    color: abstracts.$mainColor;
+    text-transform: capitalize;
+    font: {
+        weight: bold;
+        size: 14px;
+    }
+    width: fit-content;
+    padding-top: 10px;
+    margin-left: if(abstracts.$pageDir == rtl, auto, 0);
+    @include abstracts.media-down(mb) {
+        margin: auto;
+    }
+
+    &:hover {
+        @include abstracts.prefixer(box-shadow, (0 2px 0 0 #FFF, 0 4px 0 0 abstracts.$mainColor), webkit moz o);
+    }
+
+    &::after,
+    &::before {
+        font-family: "FontAwesome";
+        font-size: 10px;
+    }
+
+    @if (abstracts.$pageDir == ltr) {
+        &::after {
+            content: '\f054\f054';
+            margin-left: 3px;
+        }
+    } @else {
+        &::before {
+            content: '\f053\f053';
+            margin-right: 3px;
+        }
+    }
+}

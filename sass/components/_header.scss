@@ -1,0 +1,180 @@
+@use '../abstracts';
+
+/*-------------------------------------------------------------------*/
+/*--page main header-------------------------------------------------*/
+/*-------------------------------------------------------------------*/
+header.main-header {
+    position: relative;
+    border-bottom: 1px solid abstracts.$borderColor;
+
+    .container {
+        display: flex;
+        flex-direction: if(abstracts.$pageDir == ltr, row, row-reverse);
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+
+        &.open .burger-btn::before {
+            content: '\f00d';
+        }
+
+        @include abstracts.media-up(sm) {
+            & {
+                padding-top: 40px;
+                padding-bottom: 40px;
+            }
+
+            @include abstracts.media-down(md) {
+                flex-direction: column;
+            }
+        }
+
+        .logo {
+            .brand {
+                margin-bottom: 7px;
+                margin-top: 0;
+
+                a {
+                    color: abstracts.$logoColor;
+                    font-size: 25px;
+                    font-weight: 500;
+                    text-transform: uppercase;
+                }
+
+                &::first-letter {
+                    font-size: 34px;
+                }
+            }
+
+            .slogan {
+                font-size: 13px;
+                text-transform: capitalize;
+                color: abstracts.$darkTxt;
+                margin-left: 2px;
+            }
+        }
+
+        .burger-btn {
+            background-color: abstracts.$mainColor;
+            color: #FFF;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            min-width: 40px;
+            font-size: 22px;
+            cursor: pointer;
+
+            &::before {
+                font-family: 'FontAwesome';
+                content: '\f0c9';
+            }
+
+            @include abstracts.media-up(sm) {
+                & {
+                    display: none;
+                }
+            }
+        }
+
+        @include abstracts.media-down(mb) {
+            nav {
+                position: absolute;
+                z-index: 1;
+                #{if(abstracts.$pageDir == ltr, right, left)}: 0px;
+                top: calc(100% + 1px);
+                opacity: 0;
+                pointer-events: none;
+                transform: translateX(-50px);
+                padding: 0;
+                transition: opacity .3s ease-in-out,
+                            transform .3s ease-in-out,
+                            padding .3s ease-in-out;
+                width: 90%;
+        
+                ul {
+                    display: flex;
+                    flex-direction: column;
+                    font-size: 18px;
+        
+                    .nav__item {
+                        border-bottom: 1px solid #EEE;
+                        background-color: abstracts.$mainColorDark;
+                        padding: 15px;
+                        text-align: center;
+        
+                        &:last-of-type {
+                            border-bottom: none;
+                        }
+        
+                        &:hover {
+                            background-color: abstracts.$mainColor;
+                            color: antiquewhite;
+                        }
+        
+                        a {
+                            color: #FFF;
+                            text-transform: capitalize;
+                            font-weight: 400;
+                        }
+                    }
+                }
+            }
+
+            &.open nav {
+                opacity: 1;
+                pointer-events: initial;
+                transform: translateX(-5%);
+            }
+        
+        }
+
+        @include abstracts.media-up(sm) {
+            nav {
+                background-color: abstracts.$mainColor;
+                border-radius: 10px;
+                padding: 0 5px;
+
+                ul {
+                    display: flex;
+                    flex-direction: if(abstracts.$pageDir == ltr, row, row-reverse);
+                    
+                    .nav__item {
+                        a {
+                            color: #FFF;
+                            font-size: 15px;
+                            font-weight: bold;
+                            text-transform: uppercase;
+                            display: block;
+                            padding: 20px 10px;
+                            transition: font-size .3s ease-in-out;
+
+                            &:hover {
+                                color: rgba(255, 255, 255, 0.8);
+                            }
+                        }
+                    }
+                }
+
+                @include abstracts.media-down(md) {
+                    & {
+                        margin-top: 20px;
+                    }
+                }
+            }
+        }
+
+        // @include abstracts.media-up(md) {
+        //     nav {
+        //         ul {
+        //             .nav__item {
+        //                 a {
+        //                     font-size: 14px;
+        //                     padding: 20px 10px;
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
+    }
+}

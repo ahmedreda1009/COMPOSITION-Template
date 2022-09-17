@@ -1,0 +1,33 @@
+@use '../abstracts';
+
+/*-------------------------------------------------------------------*/
+/*--layout rules-----------------------------------------------------*/
+/*-------------------------------------------------------------------*/
+.container {
+    margin: auto;
+    width: 90%;
+    max-width: 1366px;
+    transition: width .3s ease-in-out;
+
+    @include abstracts.media-up(sm) {
+        width: 80%;
+    }
+}
+
+// .grid {
+//     display: grid;
+//     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+//     @include abstracts.media-up(sm) {
+//         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+//     }
+// }
+
+@include abstracts.grid(300);
+@include abstracts.grid(250);
+@include abstracts.grid(200);
+
+.section-offset {
+    padding-top: abstracts.$sectionPadding;
+    padding-bottom: abstracts.$sectionPadding;
+}

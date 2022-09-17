@@ -1,0 +1,180 @@
+@use '../abstracts';
+
+/*-------------------------------------------------------------------*/
+/*--page footer-------------------------------------------------*/
+/*-------------------------------------------------------------------*/
+footer {
+    background-color: abstracts.$borderColor;
+    padding-top: 40px;
+
+    .container {
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: space-between;
+            @include abstracts.media-up(sm) {
+            }
+
+            .latest {
+                @include abstracts.media-up(sm) {
+                    flex-basis: 50%;
+                }
+
+                > h3 {
+                    margin-bottom: 20px;
+                    @include abstracts.media-down(mb) {
+                        text-align: center;
+                    }
+                    color: abstracts.$darkTxt;
+                    text-transform: capitalize;
+                }
+
+                article {
+                    display: flex;
+                    gap: 20px;
+                    flex-direction: column;
+                    @include abstracts.media-up(md) {
+                        flex-direction: row;
+                    }
+                    @include abstracts.media-down(mb) {
+                        align-items: center;
+                    }
+                    align-items: flex-start;
+                    margin-bottom: 20px;
+
+                    .text {
+                        text-align: center;
+                        @include abstracts.media-up(sm) {
+                            text-align: if(abstracts.$pageDir == rtl, right, left);
+                        }
+
+                        h3 {
+                            margin-bottom: 15px;
+                            color: abstracts.$mainColor;
+                        }
+
+                        p {
+                            color: abstracts.$darkTxt;
+                        }
+                    }
+                }
+            }
+
+            .company-details {
+
+                @include abstracts.media-down(mb) {
+                    flex-basis: 45%;
+                }
+                @include abstracts.media-up(sm) {
+                    flex-basis: 48%;
+                }
+                @include abstracts.media-up(md) {
+                    flex-basis: 25%;
+                }
+
+                h3 {
+                    text-transform: capitalize;
+                    color: abstracts.$darkTxt;
+                }
+
+                .details {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    margin-top: 20px;
+                    margin-bottom: 20px;
+
+                    li {
+                        color: abstracts.$darkTxt;
+                    }
+                }
+
+                .office-hours {
+                    color: abstracts.$darkTxt;
+
+                    time {
+                        display: block;
+                        margin-top: 10px;
+                    }
+                }
+            }
+
+            .contact-us {
+                @include abstracts.media-down(mb) {
+                    flex-basis: 45%;
+                }
+                @include abstracts.media-up(sm) {
+                    flex-basis: 100%;
+                }
+                @include abstracts.media-up(md) {
+                    flex-basis: 22%;
+                }
+
+                h3 {
+                    text-transform: capitalize;
+                    color: abstracts.$darkTxt;
+                    margin-bottom: 20px;
+                }
+                
+                form {
+                    input {
+                        border: none;
+                        outline: none;
+                        margin-bottom: 10px;
+                        padding: 10px;
+                        border-radius: 5px;
+                        display: block;
+
+                        &:not(input[type="submit"]) {
+                            width: 100%;
+                        }
+                    }
+
+                    textarea {
+                        border: none;
+                        outline: none;
+                        margin-bottom: 10px;
+                        display: block;
+                        border-radius: 5px;
+                        resize: vertical;
+                        padding: 10px;
+                        width: 100%;
+                        min-height: 100px;
+                    }
+
+                    input[type="submit"] {
+                        padding: 5px 10px;
+                        background-color: abstracts.$mainColor;
+                        color: #FFF;
+                        font-size: 18px;
+                        text-transform: uppercase;
+                        cursor: pointer;
+                        transition: background-color .3s ease-in-out;
+
+                        &:hover {
+                            background-color: abstracts.$mainColorDark;
+                        }
+                    }
+                }
+            }
+        }
+
+        .copyright {
+            display: flex;
+            flex-direction: column;
+            font-size: 14px;
+            @include abstracts.media-up(sm) {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            gap: 15px;
+            text-align: center;
+            color: abstracts.$lightTxt;
+            border-top: 1px solid rgb(182, 182, 182);
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-top: 20px;
+        }
+    }
+}
